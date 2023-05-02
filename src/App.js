@@ -24,7 +24,6 @@ function App() {
     const { large: image } = person.picture;
     const { login: { password } } = person;
     const { first, last } = person.name;
-    // const {age} = person.dob;
     const { dob: { age } } = person;
     const { street: { number, name } } = person.location;
     const newPerson = {
@@ -47,7 +46,11 @@ function App() {
   }, [])
 
   const handleValue = (e) => {
-    console.log(e.target);
+    if(e.target.classList.contains('icon')) {
+      const newValue = e.target.dataset.label;     
+      setTitle(newValue)
+      setValue(person[newValue]);
+    }
   }
 
   return (
